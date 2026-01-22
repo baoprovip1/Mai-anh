@@ -1,0 +1,157 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Reset các khoảng cách mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.banner {
+	background: url("https://sf-static.upanhlaylink.com/img/image_202601226ea5fa06c84bcaacbf1c9a7509916a99.jpg") no-repeat center center;
+	background-size: cover;
+	width: 100%;
+	padding-top: 19rem;  /* Giảm padding để cân đối */
+	padding-bottom: 19rem;  /* Giảm padding để cân đối */
+	text-align: center !important;
+	color: rgb(253, 0, 25) !important;
+}
+
+div a {
+	text-decoration: none;
+}
+
+div a:hover {
+	color: red;
+}
+
+.slogan {
+	background-color: rgb(248,249,250) !important;
+	text-align: center !important;
+	width: 100%;
+	padding-right: 1rem;  /* Điều chỉnh padding đều hai bên */
+	padding-left: 1rem;
+	padding-top: 4rem;  /* Giảm padding để cân đối */
+	padding-bottom: 4rem;
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;  /* Căn giữa các phần tử */
+	max-width: 1200px;  /* Thêm max-width để kiểm soát chiều rộng */
+	margin: 0 auto;  /* Căn giữa khối row */
+	padding-right: 1rem;  /* Điều chỉnh padding cân đối */
+	padding-left: 1rem;
+}
+
+.block_3 {
+	flex: 0 0 auto;
+	width: 33.33333333%;
+	padding: 1rem;  /* Thêm padding bên trong để cân đối */
+}
+
+.block_3 a {
+	text-decoration: none;
+	color: white;
+}
+
+.content {
+	background-color: white !important;
+	text-align: center !important;
+	width: 100%;
+	padding-right: 1rem;  /* Điều chỉnh padding đều hai bên */
+	padding-left: 1rem;
+	padding-top: 4rem;  /* Giảm padding để cân đối */
+	padding-bottom: 4rem;
+}
+
+/* Thêm style cho table trong content */
+.content table {
+	width: 100%;
+	max-width: 1200px;  /* Giới hạn chiều rộng bảng */
+	margin: 0 auto;  /* Căn giữa bảng */
+	border-collapse: collapse;
+}
+
+.content table td {
+	padding: 2rem;  /* Thêm padding cho các ô trong bảng */
+	vertical-align: middle;
+}
+
+.content table tr:nth-child(even) {
+	background-color: #f8f9fa;  /* Thêm màu nền xen kẽ cho các hàng chẵn */
+}
+
+.block_2 {	
+	flex: 0 0 auto;
+	width: 50%;
+	padding: 1rem;  /* Thêm padding để cân đối */
+}
+
+.footer {
+	background-color: black !important;
+	text-align: center !important; 
+	color: white;
+	width: 100%;
+	height: auto;  /* Thay đổi từ fixed height sang auto */
+	padding: 2rem 1rem;  /* Sử dụng padding thay vì padding-top */
+}
+
+.footer .row {
+	padding: 0;  /* Xóa padding của row trong footer */
+}
+
+.footer .block_3 {
+	padding: 1rem;  /* Đảm bảo padding đồng đều */
+}
+
+.footer a:hover {
+	color: red;
+}
+
+/* Thêm responsive cho mobile */
+@media (max-width: 768px) {
+	.banner {
+		padding-top: 4rem;
+		padding-bottom: 4rem;
+	}
+	
+	.slogan, .content {
+		padding-top: 3rem;
+		padding-bottom: 3rem;
+	}
+	
+	.block_3 {
+		width: 100%;  /* Trên mobile, block_3 chiếm toàn bộ chiều rộng */
+		margin-bottom: 1rem;
+	}
+	
+	.content table td {
+		padding: 1rem;
+		display: block;  /* Trên mobile, chuyển table thành dạng block */
+		width: 100%;
+	}
+	
+	.content table tr {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 2rem;
+	}
+	
+	.footer .block_3 {
+		width: 100%;
+		margin-bottom: 1rem;
+	}
+}
+
+/* Thêm style cho tiêu đề h1, h2, h3 */
+h1, h2, h3 {
+	margin-bottom: 1rem;
+}
+
+p {
+	margin-bottom: 0.5rem;
+	line-height: 1.5;
+}

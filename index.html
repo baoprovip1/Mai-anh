@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Trang chủ - CLB Ngoại khóa THPT Nguyễn Văn Huyên</title>
+		<link href="styles.css" rel="stylesheet" type="text/css">
+		<style>
+			/* Thêm CSS nội tuyến để không phụ thuộc vào file ngoài */
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			
+			body {
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				line-height: 1.6;
+				color: #333;
+				background-color: #f8f9fa;
+			}
+			
+			/* Banner với ảnh cổng trường */
+			.banner {
+				position: relative;
+				height: 400px;
+				background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), 
+							url('https://sf-static.upanhlaylink.com/img/image_202601226ea5fa06c84bcaacbf1c9a7509916a99.jpg') no-repeat center center;
+				background-size: cover;
+				background-position: center 30%; /* Cắt bớt mặt sân, tập trung vào cổng trường */
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-bottom: 30px;
+				overflow: hidden;
+			}
+			
+			.banner::after {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 100px;
+				background: linear-gradient(to bottom, transparent, #f8f9fa);
+				z-index: 1;
+			}
+			
+			.banner h1 {
+				color: white;
+				font-size: 42px;
+				text-align: center;
+				text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+				padding: 20px 40px;
+				background-color: rgba(41, 128, 185, 0.8);
+				border-radius: 10px;
+				z-index: 2;
+				position: relative;
+				backdrop-filter: blur(5px);
+				border: 2px solid rgba(255, 255, 255, 0.2);
+				letter-spacing: 1px;
+				max-width: 90%;
+				animation: fadeInUp 1s ease-out;
+			}
+			
+			@keyframes fadeInUp {
+				from {
+					opacity: 0;
+					transform: translateY(30px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+			
+			/* Link đăng ký */
+			.registration-link {
+				text-align: center;
+				margin: 20px auto 30px;
+				padding: 0 20px;
+			}
+			
+			.registration-link a {
+				display: inline-block;
+				background: linear-gradient(135deg, #3498db, #2ecc71);
+				color: white;
+				padding: 15px 30px;
+				text-decoration: none;
+				border-radius: 50px;
+				font-size: 20px;
+				font-weight: bold;
+				box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			.registration-link a:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 10px 20px rgba(52, 152, 219, 0.6);
+				background: linear-gradient(135deg, #2ecc71, #3498db);
+			}
+			
+			.registration-link a::after {
+				content: '→';
+				margin-left: 10px;
+				transition: transform 0.3s;
+			}
+			
+			.registration-link a:hover::after {
+				transform: translateX(5px);
+			}
+			
+			/* Phần slogan */
+			.slogan {
+				background-color: #ffffff;
+				padding: 25px 0;
+				margin: 0 auto 40px;
+				max-width: 1200px;
+				border-radius: 15px;
+				box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+			}
+			
+			.row {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				max-width: 1200px;
+				margin: 0 auto;
+			}
+			
+			.block_3 {
+				flex: 1;
+				min-width: 250px;
+				padding: 25px 20px;
+				text-align: center;
+				margin: 10px;
+				background-color: white;
+				border-radius: 12px;
+				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+				transition: all 0.3s ease;
+				border-top: 5px solid #3498db;
+			}
+			
+			.block_3:nth-child(2) {
+				border-top-color: #e74c3c;
+			}
+			
+			.block_3:nth-child(3) {
+				border-top-color: #f39c12;
+			}
+			
+			.block_3:hover {
+				transform: translateY(-10px);
+				box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+			}
+			
+			.block_3 h3 {
+				color: #2c3e50;
+				margin-bottom: 15px;
+				font-size: 22px;
+				font-weight: 700;
+			}
+			
+			.text-content {
+				color: #555;
+				font-size: 16px;
+				line-height: 1.5;
+			}
+			
+			/* Nội dung chính - CLB */
+			.content {
+				max-width: 1200px;
+				margin: 0 auto 50px;
+				padding: 0 20px;
+			}
+			
+			.clubs-container {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+				gap: 30px;
+				margin-top: 20px;
+			}
+			
+			.club-item {
+				display: flex;
+				background: white;
+				border-radius: 15px;
+				overflow: hidden;
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+				transition: all 0.4s ease;
+				min-height: 250px;
+			}
+			
+			.club-item:hover {
+				transform: translateY(-8px);
+				box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+			}
+			
+			.club-text {
+				flex: 1;
+				padding: 25px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+			
+			.club-image {
+				flex: 1;
+				overflow: hidden;
+			}
+			
+			.club-image img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				transition: transform 0.5s ease;
+			}
+			
+			.club-item:hover .club-image img {
+				transform: scale(1.05);
+			}
+			
+			.club-item h3 {
+				margin-bottom: 15px;
+				font-size: 22px;
+				font-weight: 700;
+			}
+			
+			.club-item p {
+				color: #555;
+				line-height: 1.6;
+			}
+			
+			/* Màu sắc riêng cho từng CLB */
+			.club-item:nth-child(1) { /* Học Siêu - Chơi Đỉnh */
+				border-left: 6px solid #9b59b6;
+			}
+			
+			.club-item:nth-child(1) h3 {
+				color: #9b59b6;
+			}
+			
+			.club-item:nth-child(2) { /* Thể thao */
+				border-left: 6px solid #3498db;
+			}
+			
+			.club-item:nth-child(2) h3 {
+				color: #3498db;
+			}
+			
+			.club-item:nth-child(3) { /* Nghệ thuật */
+				border-left: 6px solid #e74c3c;
+			}
+			
+			.club-item:nth-child(3) h3 {
+				color: #e74c3c;
+			}
+			
+			.club-item:nth-child(4) { /* Kỹ Năng Số */
+				border-left: 6px solid #2ecc71;
+			}
+			
+			.club-item:nth-child(4) h3 {
+				color: #2ecc71;
+			}
+			
+			.club-item:nth-child(5) { /* Tình Nguyện */
+				border-left: 6px solid #f39c12;
+			}
+			
+			.club-item:nth-child(5) h3 {
+				color: #f39c12;
+			}
+			
+			.club-item:nth-child(6) { /* Tiếng Anh */
+				border-left: 6px solid #1abc9c;
+			}
+			
+			.club-item:nth-child(6) h3 {
+				color: #1abc9c;
+			}
+			
+			.club-item:nth-child(7) { /* Truyền thông */
+				border-left: 6px solid #34495e;
+			}
+			
+			.club-item:nth-child(7) h3 {
+				color: #34495e;
+			}
+			
+			.club-item:nth-child(8) { /* STEM */
+				border-left: 6px solid #e67e22;
+			}
+			
+			.club-item:nth-child(8) h3 {
+				color: #e67e22;
+			}
+			
+			/* Footer */
+			.footer {
+				background: linear-gradient(135deg, #2c3e50, #1a2530);
+				color: white;
+				padding: 50px 0 40px;
+				margin-top: 60px;
+			}
+			
+			.footer .row {
+				max-width: 1200px;
+			}
+			
+			.footer .block_3 {
+				background-color: transparent;
+				box-shadow: none;
+				border-top: none;
+				color: #ecf0f1;
+				text-align: left;
+			}
+			
+			.footer .block_3:hover {
+				transform: none;
+				box-shadow: none;
+			}
+			
+			.footer h3 {
+				color: #3498db;
+				margin-bottom: 20px;
+				font-size: 20px;
+				border-bottom: 2px solid rgba(52, 152, 219, 0.3);
+				padding-bottom: 10px;
+				display: inline-block;
+			}
+			
+			.footer a {
+				color: #bdc3c7;
+				text-decoration: none;
+				transition: color 0.3s;
+				display: block;
+				padding: 5px 0;
+				position: relative;
+				padding-left: 15px;
+			}
+			
+			.footer a:hover {
+				color: #3498db;
+				padding-left: 20px;
+			}
+			
+			.footer a::before {
+				content: '›';
+				position: absolute;
+				left: 0;
+				transition: left 0.3s;
+			}
+			
+			.footer a:hover::before {
+				left: 5px;
+			}
+			
+			.footer p {
+				margin-bottom: 10px;
+				line-height: 1.6;
+			}
+			
+			/* Responsive */
+			@media (max-width: 768px) {
+				.banner {
+					height: 300px;
+				}
+				
+				.banner h1 {
+					font-size: 28px;
+					padding: 15px 25px;
+				}
+				
+				.registration-link a {
+					font-size: 18px;
+					padding: 12px 25px;
+				}
+				
+				.row {
+					flex-direction: column;
+				}
+				
+				.block_3 {
+					min-width: 100%;
+					margin: 10px 0;
+				}
+				
+				.clubs-container {
+					grid-template-columns: 1fr;
+					gap: 20px;
+				}
+				
+				.club-item {
+					flex-direction: column;
+					min-height: auto;
+				}
+				
+				.club-image {
+					height: 200px;
+				}
+				
+				.club-text {
+					padding: 20px;
+				}
+				
+				.footer .block_3 {
+					text-align: center;
+					margin: 20px 0;
+				}
+				
+				.footer a {
+					padding-left: 0;
+				}
+				
+				.footer a::before {
+					display: none;
+				}
+			}
+			
+			@media (max-width: 480px) {
+				.banner {
+					height: 250px;
+				}
+				
+				.banner h1 {
+					font-size: 22px;
+					padding: 12px 20px;
+				}
+				
+				.registration-link a {
+					font-size: 16px;
+					padding: 10px 20px;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="banner">
+			<h1>CLB NGOẠI KHÓA TRƯỜNG THPT NGUYỄN VĂN HUYÊN</h1>			
+		</div>
+		
+		<div class="registration-link">
+			<a href="https://forms.gle/hck5HqcbSwXhuVmH9">
+				<b>ĐĂNG KÝ THAM GIA CÁC CLB CỦA TRƯỜNG THPT NGUYỄN VĂN HUYÊN</b>
+			</a>
+		</div>
+		
+		<div class="slogan">
+			<div class="row">
+				<div class="block_3">
+					<h3>Năng động</h3>
+					<p class="text-content">Hoạt động năng nổ và hiệu quả</p>
+				</div>
+				<div class="block_3">
+					<h3>Đam mê</h3>
+					<p class="text-content">Cháy hết mình trong các cuộc chơi</p>
+				</div>
+				<div class="block_3">
+					<h3>Tỏa sáng</h3>
+					<p class="text-content">Giành những giải thưởng cao nhất</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="content">
+			<div class="clubs-container">
+				<!-- CLB 1: Học Siêu - Chơi Đỉnh -->
+				<div class="club-item">
+					<div class="club-text">
+						<h3>Học Siêu - Chơi Đỉnh</h3>
+						<p>Nơi phát triển tư duy và kiến thức chuyên sâu, giúp học sinh đạt thành tích cao trong các kỳ thi học thuật.</p>
+					</div>
+					<div class="club-image">
+						<img src="https://sf-static.upanhlaylink.com/img/image_202601221d66db606ad22d8c15b4c5a83f6d4690.jpg" alt="Học Siêu - Chơi Đỉnh">
+					</div>
+				</div>
+				
+				<!-- CLB 2: Thể thao -->
+				<div class="club-item">
+					<div class="club-image">
+						<img src="https://sf-static.upanhlaylink.com/img/image_2026012246a7676d6562d272249cd5dcf2407a6e.jpg" alt="CLB Thể thao">
+					</div>
+					<div class="club-text">
+						<h3>CLB - Thể thao</h3>
+						<p>CLB thể thao trường THPT Nguyễn Văn Huyên đã hoạt động sôi nổi trong nhiều năm qua, đạt rất nhiều giải trong và ngoài tỉnh.</p>
+					</div>
+				</div>
+				
+				<!-- CLB 3: Nghệ thuật -->
+				<div class="club-item">
+					<div class="club-text">
+						<h3>CLB - Nghệ thuật</h3>
+						<p>Phong trào văn nghệ trường THPT Nguyễn Văn Huyên hoạt động rất nhiệt tình và hiệu quả, các ca sĩ là các em học sinh đã đạt nhiều giải cấp tỉnh.</p>
+					</div>
+					<div class="club-image">
+						<img src="https://sf-static.upanhlaylink.com/img/image_20260122c02446a5e37218ab8c77afaccf1e2671.jpg" alt="CLB Nghệ thuật">
+					</div>
+				</div>
+				
+				<!-- CLB 4: Kỹ Năng Số -->
+				<div class="club-item">
+					<div class="club-image">
+						<img src="https://sf-static.upanhlaylink.com/img/image_20260122a43dbbb729df54b8ba8cbf3e84a1398f.jpg" alt="CLB Kỹ Năng Số">
+					</div>
+					<div class="club-text">
+						<h3>CLB - Kỹ Năng Số</h3>
+						<p>Khám phá thế giới lập trình, robotics và sáng tạo kỹ thuật, nơi các ý tưởng công nghệ được hiện thực hóa.</p>
+					</div>
+				</div>
+				
+				<!-- CLB 5: Tình Nguyện -->
+				<div class="club-item">
+					<div class="club-text">
+						<h3>CLB - Tình Nguyện</h3>
+						<p>Lan tỏa yêu thương và trách nhiệm cộng đồng thông qua các hoạt động thiện nguyện ý nghĩa và thiết thực.</p>
+					</div>
+					<div class="club-image">
+						<img src="https://sf-static.upanhlaylink.com/img/image_20260122e7c059b624127d9c5f85ea9abc1b35b1.jpg" alt="CLB Tình Nguyện">
+					</div>
+				</div>
+				
+				<!-- CLB 6: Tiếng Anh -->
+				<div class="club-item">
+					<div class="club-image">
+						<img src="https://sf-static.upanhlaylink.com/img/image_20260122d3d13d1cd790ec6b73781835ffb3f25e.jpg" alt="CLB Tiếng Anh">
+					</div>
+					<div class="club-text">
+						<h3>CLB - Tiếng Anh</h3>
+						<p>Nâng cao kỹ năng giao tiếp quốc tế, tìm hiểu văn hóa các nước và chuẩn bị cho các chứng chỉ quốc tế.</p>
+					</div>
+				</div>
+				
+				<!-- CLB 7: Truyền thông -->
+				<div class="club-item">
+					<div class="club-text">
+						<h3>CLB - Truyền thông</h3>
+						<p>Nơi đào tạo các phóng viên, biên tập viên trẻ, sản xuất các ấn phẩm báo chí và quản lý truyền thông của trường.</p>
+					</div>
+					<div class="club-image">
+						<img src="https://sf-static.upanhlaylink.com/img/image_202601221ae46faa5a572334e0738bc443890176.jpg" alt="CLB Truyền thông">
+					</div>
+				</div>
+				
+				<!-- CLB 8: STEM -->
+				<div class="club-item">
+					<div class="club-image">
+						<img src="https://sf-static.upanhlaylink.com/img/image_2026012269d8cfe7d066d90fd1875fd63644b04d.jpg" alt="CLB STEM">
+					</div>
+					<div class="club-text">
+						<h3>CLB - STEM</h3>
+						<p>Kết hợp Khoa học, Công nghệ, Kỹ thuật, Nghệ thuật và Toán học để phát triển tư duy sáng tạo và giải quyết vấn đề thực tế.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="footer">
+			<div class="row">
+				<div class="block_3">
+					<h3>Liên hệ</h3> 
+					<p>Mọi chi tiết xin liên hệ trường THPT Nguyễn Văn Huyên<br/>
+					ĐC: Tổ 13, Phường An Tường, Tỉnh Tuyên Quang.</p>
+				</div>
+				<div class="block_3">
+					<h3>Bản quyền</h3> 
+					<p>Bản quyền thuộc về trường THPT Nguyễn Văn Huyên<br/>
+					Phường An Tường, Tỉnh Tuyên Quang.</p>
+				</div>
+				<div class="block_3">
+					<h3>Liên kết</h3> 
+					<p>
+						<a href="thethao.html">Trang Thể thao</a>
+						<a href="nghethuat.html">Trang Nghệ thuật</a>
+						<a href="truyenthong.html">Trang Truyền Thông</a>
+						<a href="tinhnguyen.html">Trang Tình Nguyện</a>
+						<a href="kynangso.html">Trang Kỹ Năng Số</a>
+						<a href="tienganh.html">Trang Tiếng Anh</a>
+						<a href="stem.html">Trang STEM</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

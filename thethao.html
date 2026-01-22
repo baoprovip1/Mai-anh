@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Thể thao - CLB Ngoại khóa THPT Nguyễn Văn Huyên</title>
+		<link href="styles.css" rel="stylesheet" type="text/css">
+		<style>
+			/* Thêm CSS nội tuyến để không phụ thuộc vào file ngoài */
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			
+			body {
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				line-height: 1.6;
+				color: #333;
+				background-color: #f8f9fa;
+			}
+			
+			/* Banner với ảnh thể thao */
+			.banner {
+				position: relative;
+				height: 350px;
+				background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), 
+							url('https://sf-static.upanhlaylink.com/img/image_2026012246a7676d6562d272249cd5dcf2407a6e.jpg') no-repeat center center;
+				background-size: cover;
+				background-position: center 40%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-bottom: 30px;
+				overflow: hidden;
+			}
+			
+			.banner::after {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 100px;
+				background: linear-gradient(to bottom, transparent, #f8f9fa);
+				z-index: 1;
+			}
+			
+			.banner h2 {
+				color: white;
+				font-size: 38px;
+				text-align: center;
+				text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+				padding: 20px 40px;
+				background-color: rgba(52, 152, 219, 0.85);
+				border-radius: 10px;
+				z-index: 2;
+				position: relative;
+				backdrop-filter: blur(5px);
+				border: 2px solid rgba(255, 255, 255, 0.2);
+				letter-spacing: 1px;
+				max-width: 90%;
+				animation: fadeInUp 1s ease-out;
+			}
+			
+			@keyframes fadeInUp {
+				from {
+					opacity: 0;
+					transform: translateY(30px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+			
+			/* Phần slogan */
+			.slogan {
+				background-color: #ffffff;
+				padding: 25px 0;
+				margin: 0 auto 40px;
+				max-width: 1200px;
+				border-radius: 15px;
+				box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+			}
+			
+			.row {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				max-width: 1200px;
+				margin: 0 auto;
+			}
+			
+			.block_3 {
+				flex: 1;
+				min-width: 250px;
+				padding: 25px 20px;
+				text-align: center;
+				margin: 10px;
+				background-color: white;
+				border-radius: 12px;
+				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+				transition: all 0.3s ease;
+				border-top: 5px solid #3498db;
+			}
+			
+			.block_3:nth-child(2) {
+				border-top-color: #e74c3c;
+			}
+			
+			.block_3:nth-child(3) {
+				border-top-color: #f39c12;
+			}
+			
+			.block_3:hover {
+				transform: translateY(-10px);
+				box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+			}
+			
+			.block_3 h3 {
+				color: #2c3e50;
+				margin-bottom: 15px;
+				font-size: 22px;
+				font-weight: 700;
+			}
+			
+			.text-content {
+				color: #555;
+				font-size: 16px;
+				line-height: 1.5;
+			}
+			
+			/* Nội dung chính */
+			.main-content {
+				max-width: 1200px;
+				margin: 0 auto 50px;
+				padding: 0 20px;
+			}
+			
+			.club-section, .news-section {
+				background-color: white;
+				padding: 30px;
+				border-radius: 15px;
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+				margin-bottom: 30px;
+			}
+			
+			.club-section h2, .news-section h2 {
+				color: #2c3e50;
+				border-left: 5px solid #3498db;
+				padding-left: 15px;
+				margin-bottom: 25px;
+				font-size: 26px;
+				font-weight: 700;
+			}
+			
+			.sports-list {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+				gap: 15px;
+				margin-top: 20px;
+			}
+			
+			.sport-item {
+				background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+				border-radius: 10px;
+				padding: 20px;
+				text-align: center;
+				transition: all 0.3s ease;
+				border: 2px solid transparent;
+			}
+			
+			.sport-item:hover {
+				background: linear-gradient(135deg, #3498db, #2980b9);
+				transform: translateY(-5px);
+				box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+				border-color: #3498db;
+			}
+			
+			.sport-item a {
+				text-decoration: none;
+				color: #2c3e50;
+				font-size: 18px;
+				font-weight: 600;
+				display: block;
+				transition: color 0.3s;
+			}
+			
+			.sport-item:hover a {
+				color: white;
+			}
+			
+			.sport-item::before {
+				content: '🏆';
+				font-size: 24px;
+				display: block;
+				margin-bottom: 10px;
+			}
+			
+			.sport-item:nth-child(2)::before { content: '🏐'; }
+			.sport-item:nth-child(3)::before { content: '🏀'; }
+			.sport-item:nth-child(4)::before { content: '🥋'; }
+			.sport-item:nth-child(5)::before { content: '🏊'; }
+			
+			.news-content {
+				margin-top: 20px;
+			}
+			
+			.news-title {
+				background: linear-gradient(135deg, #3498db, #2ecc71);
+				color: white;
+				padding: 20px;
+				border-radius: 10px;
+				text-align: center;
+				font-size: 22px;
+				margin-bottom: 25px;
+				box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+			}
+			
+			.news-paragraph {
+				margin-bottom: 20px;
+				text-align: justify;
+				line-height: 1.7;
+				font-size: 16px;
+			}
+			
+			.news-subtitle {
+				font-weight: bold;
+				color: #2c3e50;
+				margin-top: 30px;
+				margin-bottom: 15px;
+				font-size: 20px;
+				border-bottom: 3px solid #3498db;
+				padding-bottom: 8px;
+				display: inline-block;
+			}
+			
+			.highlight {
+				background-color: #e8f4fc;
+				padding: 20px;
+				border-left: 5px solid #3498db;
+				border-radius: 0 10px 10px 0;
+				margin: 25px 0;
+			}
+			
+			.sports-image {
+				display: block;
+				max-width: 100%;
+				height: auto;
+				margin: 30px auto;
+				border-radius: 12px;
+				box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+				border: 5px solid white;
+			}
+			
+			/* Footer */
+			.footer {
+				background: linear-gradient(135deg, #2c3e50, #1a2530);
+				color: white;
+				padding: 50px 0 40px;
+				margin-top: 60px;
+			}
+			
+			.footer .row {
+				max-width: 1200px;
+			}
+			
+			.footer .block_3 {
+				background-color: transparent;
+				box-shadow: none;
+				border-top: none;
+				color: #ecf0f1;
+				text-align: left;
+			}
+			
+			.footer .block_3:hover {
+				transform: none;
+				box-shadow: none;
+			}
+			
+			.footer h3 {
+				color: #3498db;
+				margin-bottom: 20px;
+				font-size: 20px;
+				border-bottom: 2px solid rgba(52, 152, 219, 0.3);
+				padding-bottom: 10px;
+				display: inline-block;
+			}
+			
+			.footer a {
+				color: #bdc3c7;
+				text-decoration: none;
+				transition: color 0.3s;
+				display: block;
+				padding: 5px 0;
+				position: relative;
+				padding-left: 15px;
+			}
+			
+			.footer a:hover {
+				color: #3498db;
+				padding-left: 20px;
+			}
+			
+			.footer a::before {
+				content: '›';
+				position: absolute;
+				left: 0;
+				transition: left 0.3s;
+			}
+			
+			.footer a:hover::before {
+				left: 5px;
+			}
+			
+			.footer p {
+				margin-bottom: 10px;
+				line-height: 1.6;
+			}
+			
+			/* Responsive */
+			@media (max-width: 768px) {
+				.banner {
+					height: 250px;
+				}
+				
+				.banner h2 {
+					font-size: 26px;
+					padding: 15px 25px;
+				}
+				
+				.row {
+					flex-direction: column;
+				}
+				
+				.block_3 {
+					min-width: 100%;
+					margin: 10px 0;
+				}
+				
+				.sports-list {
+					grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+				}
+				
+				.club-section, .news-section {
+					padding: 20px;
+				}
+				
+				.news-title {
+					font-size: 18px;
+					padding: 15px;
+				}
+				
+				.footer .block_3 {
+					text-align: center;
+					margin: 20px 0;
+				}
+				
+				.footer a {
+					padding-left: 0;
+				}
+				
+				.footer a::before {
+					display: none;
+				}
+			}
+			
+			@media (max-width: 480px) {
+				.banner {
+					height: 200px;
+				}
+				
+				.banner h2 {
+					font-size: 20px;
+					padding: 12px 20px;
+				}
+				
+				.sports-list {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="banner">
+			<h2>CÂU LẠC BỘ THỂ THAO TRƯỜNG THPT NGUYỄN VĂN HUYÊN</h2>			
+		</div>
+		
+		<div class="slogan">
+			<div class="row">
+				<div class="block_3">
+					<h3>Năng động</h3>
+					<p class="text-content">Hoạt động năng nổ và hiệu quả</p>
+				</div>
+				<div class="block_3">
+					<h3>Đam mê</h3>
+					<p class="text-content">Cháy hết mình trong các cuộc chơi</p>
+				</div>
+				<div class="block_3">
+					<h3>Tỏa sáng</h3>
+					<p class="text-content">Giành những giải thưởng cao nhất</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="main-content">
+			<div class="club-section">
+				<h2>Các môn thể thao trong CLB</h2>  
+				<div class="sports-list">
+					<div class="sport-item">
+						<a href="#">Bóng đá</a>
+					</div>
+					<div class="sport-item">
+						<a href="#">Bóng chuyền</a>
+					</div>
+					<div class="sport-item">
+						<a href="#">Bóng rổ</a>
+					</div>
+					<div class="sport-item">
+						<a href="#">Võ</a>
+					</div>
+					<div class="sport-item">
+						<a href="#">Bơi</a>
+					</div>
+				</div>
+			</div>
+			
+			<div class="news-section">
+				<h2>Tin tức thể thao mới nhất</h2>
+				
+				<div class="news-content">
+					<div class="news-title">
+						🌈🌈🌈 KHAI MẠC GIẢI BÓNG ĐÁ NAM HỌC SINH TRƯỜNG THPT NGUYỄN VĂN HUYÊN
+					</div>
+					
+					<p class="news-paragraph">
+						Thực hiện kế hoạch hoạt động Đoàn năm học 2025 - 2026 và hướng tới kỷ niệm 95 năm ngày thành lập Đoàn Thanh niên Cộng sản Hồ Chí Minh (26/03/1931 - 26/03/2026); 80 năm Ngày Thể thao Việt Nam (27/03/1946 - 27/03/2026), chiều ngày 10 tháng 12 năm 2025, trường THPT Nguyễn Văn Huyên đã tổ chức khai mạc giải bóng đá nam học sinh năm học 2025 - 2026, tại sân bóng trường THPT Nguyễn Văn Huyên.
+					</p>
+					
+					<p class="news-paragraph">
+						Đây là giải đấu được tổ chức nhằm tạo ra sân chơi lành mạnh không chỉ rèn luyện sức khỏe mà còn góp phần thể hiện mục tiêu giáo dục toàn diện của nhà trường. Tham gia giải đấu năm nay có 35 đội bóng đến từ 37 chi đoàn trong nhà trường. Giải đấu dự kiến sẽ kéo dài đến tháng 24/03/2026.
+					</p>
+					
+					<h3 class="news-subtitle">Thành phần tham dự</h3>
+					
+					<div class="highlight">
+						<p class="news-paragraph">
+							Đến dự lễ khai mạc có đông đủ các thầy cô trong Ban giám hiệu Nhà trường, BCH Đoàn trường, nhóm Giáo viên GDTC, các thầy cô giáo và các cầu thủ của 35 đội bóng cùng đông đảo các cổ động viên là học sinh các lớp trong toàn trường.
+						</p>
+					</div>
+					
+					<h3 class="news-subtitle">Lễ khai mạc</h3>
+					
+					<p class="news-paragraph">
+						Thay mặt ban tổ chức, NGƯT Nguyễn Thị Hoà, Hiệu trưởng Nhà trường đã long trọng tuyên bố khai mạc giải đá bóng nam học sinh năm học 2025 - 2026 trong niềm hân hoan của các cầu thủ 35 đội bóng. Sau nhiều tháng hồi hộp, háo hức đợi chờ của những người yêu mến bóng đá tuổi học trò, cuối cùng thì trái bóng mùa giải 2025 - 2026 cũng đã lăn, hứa hẹn những trận đấu sôi động và hấp dẫn.
+					</p>
+					
+					<h3 class="news-subtitle">Ý nghĩa giải đấu</h3>
+					
+					<p class="news-paragraph">
+						Giải bóng đá nam học sinh THPT Nguyễn Văn Huyên là hoạt động nằm trong chuỗi các hoạt động hướng tới kỷ niệm 95 năm ngày thành lập Đoàn Thanh niên Cộng sản Hồ Chí Minh (26/03/1931 - 26/03/2026); 80 năm Ngày Thể thao Việt Nam (27/03/1946 - 27/03/2026). Dù quá trình tổ chức còn nhiều khó khăn, song các thầy cô trong nhà trường đều nhận thấy những giá trị to lớn mà giải đấu mang lại trong quá trình giáo dục học sinh.
+					</p>
+					
+					<h3 class="news-subtitle">Phát biểu của Hiệu trưởng</h3>
+					
+					<div class="highlight">
+						<p class="news-paragraph">
+							Phát biểu tại lễ khai mạc, NGƯT Nguyễn Thị Hoà, Hiệu trưởng Nhà trường nhấn mạnh: đến với giải bóng đá, các em học sinh không chỉ rèn luyện sức khỏe, đẩy mạnh phong trào giáo dục thể chất mà còn tăng cường tinh thần đoàn kết, giao lưu học hỏi; phát triển kĩ năng mềm, góp phần giáo dục toàn diện người học, nâng cao hiệu quả công tác giáo dục chính trị tư tưởng, đạo đức lối sống trong học sinh. Đây vừa là sân chơi bổ ích cho các em, đồng thời cũng là cơ hội để nhà trường phát hiện những vận động viên xuất sắc, tuyển chọn cho đội bóng của nhà trường tham gia các giải đấu do Đoàn cấp trên tổ chức.
+						</p>
+					</div>
+					
+					<img src="https://sf-static.upanhlaylink.com/img/image_2026012246a7676d6562d272249cd5dcf2407a6e.jpg" alt="Hoạt động của các CLB thể thao" class="sports-image">
+				</div>
+			</div>
+		</div>
+		
+		<div class="footer">
+			<div class="row">
+				<div class="block_3">
+					<h3>Liên hệ</h3> 
+					<p>Mọi chi tiết xin liên hệ trường THPT Nguyễn Văn Huyên<br/>
+					ĐC: Tổ 13, Phường An Tường, Tỉnh Tuyên Quang.</p>
+				</div>
+				<div class="block_3">
+					<h3>Bản quyền</h3> 
+					<p>Bản quyền thuộc về trường THPT Nguyễn Văn Huyên<br/>
+					Phường An Tường, Tỉnh Tuyên Quang.</p>
+				</div>
+				<div class="block_3">
+					<h3>Liên kết</h3> 
+					<p>
+						<a href="index.html">Trang chủ</a>
+						<a href="nghethuat.html">Trang Nghệ thuật</a>
+						<a href="truyenthong.html">Trang Truyền Thông</a>
+						<a href="tinhnguyen.html">Trang Tình Nguyện</a>
+						<a href="kynangso.html">Trang Kỹ Năng Số</a>
+						<a href="tienganh.html">Trang Tiếng Anh</a>
+						<a href="stem.html">Trang STEM</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
